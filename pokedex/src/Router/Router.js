@@ -27,8 +27,17 @@ function Router () {
       }  
 
     const deleteFromPokedex = (pokemonToBeDeleted) => {
-      const newPokedex = [...pokedex]        
+      const newPokedex = [...pokedex]
+      let index = 0
+
+      for(let i = 0; i < pokedex.length; i++){
+        
+        if(pokemonToBeDeleted === pokedex[i]){
+          index = i
+        }        
+      }
       
+      newPokedex.splice(index, 1)
       setPokedex(newPokedex)
     }
 
@@ -37,7 +46,7 @@ function Router () {
             <Routes>
                 <Route path="/" element={<HomePage addToPokedex={addToPokedex} activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>}/>
                 <Route path="/pokedex" element={<Pokedex pokedex={pokedex} deleteFromPokedex={deleteFromPokedex} activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>}/>
-                <Route path="/:pokemonId" element={<DetailsPage/>}/>
+                <Route path="/pokemon/:pokemonId" element={<DetailsPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
         </BrowserRouter>

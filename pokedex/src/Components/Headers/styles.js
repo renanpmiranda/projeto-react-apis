@@ -32,6 +32,23 @@ export const Button = styled.button`
     border-radius: 8px;
 ` 
 
+export const DeleteButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 10px;
+
+    position: absolute;
+    width: 287px;
+    height: 74px;
+    left: 1112px;
+    top: 41px;
+    color: white;
+    background:#FF6262;
+    border-radius: 8px;
+` 
+
 export const Link = styled.a`
     display: flex;
     flex-direction: row;
