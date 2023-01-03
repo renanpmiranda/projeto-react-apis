@@ -3,8 +3,12 @@ import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pok
 import pokeball from "../../Assets/pngwing 2.png"
 import { getTypes } from "../../Utils/ReturnPokemonType"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import { goToDetails } from "../../Router/coordinator"
 
-const PokemonCard = (props) => {
+function PokemonCard (props) {
+
+  const navigate = useNavigate()  
 
   const [pokemonId, setPokemonId] = useState("")
 
@@ -20,7 +24,7 @@ const PokemonCard = (props) => {
     try {
 
       const response = await axios.get(props.pokemon.url)    
-                  
+        
       setPokemonId(response.data.id)
       setPokemonTypes(response.data.types)               
       setPokemonImage(response.data.sprites.front_default)         
@@ -40,7 +44,7 @@ const PokemonCard = (props) => {
                 return <PokemonType src={getTypes(type.type.name)} alt='' />
             })}
         </TypesContainer>
-        <p>Detalhes</p>
+        <p onClick={() => goToDetails(navigate, pokemonId)}>Detalhes</p>
       </div>
       <div>
         <Pokemon src={pokemonImage} alt="" />
