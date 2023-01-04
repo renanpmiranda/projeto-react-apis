@@ -39,6 +39,7 @@ export const PokemonType = styled.img`
 
 export const TypesContainer = styled.div`
   margin-bottom: 52px;
+  display: flex;
 `;
 
 export const Pokeball = styled.img`
