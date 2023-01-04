@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import { GlobalContext } from "./Contexts/GlobalContext"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { ChakraProvider } from "@chakra-ui/react"
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -40,8 +41,10 @@ function App() {
 
   return (
     <GlobalContext.Provider value={context}> 
-      <GlobalStyle/>   
-      <Router/>      
+      <ChakraProvider>
+        <GlobalStyle/>   
+        <Router/>   
+      </ChakraProvider>   
     </GlobalContext.Provider>
   );
 }

@@ -34,11 +34,17 @@ function PokemonCard (props) {
     }
   }
 
+  const capitalizeFirstLetter = (string) => {
+    const capitalized = string.charAt(0).toUpperCase() + string.slice(1)
+
+    return capitalized
+  }
+
   return (
     <Container color={pokemonTypes && pokemonTypes[0]}>            
       <div>
         <PokemonNumber>#{pokemonId}</PokemonNumber>
-        <PokemonName>{props.pokemon.name}</PokemonName>
+        <PokemonName>{capitalizeFirstLetter(props.pokemon.name)}</PokemonName>
         <TypesContainer>
             {pokemonTypes.map((type) => {              
                 return <PokemonType src={getTypes(type.type.name)} alt='' />
