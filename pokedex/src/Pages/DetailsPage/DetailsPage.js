@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import HeaderDetails from '../../Components/Headers/HeaderDetails'
-import { CardContainer, Heading, Move, MovesContainer, StatsContainer, Titles, FinalImageContainer, FinalImage, Stats, StatValues, ValuesContainer } from './styles'
+import { CardContainer, Move, MovesContainer, StatsContainer, Titles, FinalImageContainer, FinalImage, Stats, StatValues, ValuesContainer } from './styles'
 import axios from 'axios'
 import { BASE_URL } from '../../Constants/url'
 import pokeball from "../../Assets/pngwing 2.png"
 import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, PokemonImage, ImagesContainer, InfoMovesContainer } from './styles'
 import { getTypes } from "../../Utils/ReturnPokemonType"
-import { Progress } from "@chakra-ui/react"
+import { Progress, Heading } from "@chakra-ui/react"
 
 function DetailsPage() {  
 
@@ -37,7 +37,7 @@ function DetailsPage() {
     try {
 
       const response = await axios.get(`${BASE_URL}/pokemon/${params.pokemonId}`)    
-      console.log(response)
+      
       setPokemonId(response.data.id)
       setPokemonTypes(response.data.types)               
       setPokemonImage(response.data.sprites.front_default)  
@@ -61,7 +61,7 @@ function DetailsPage() {
   return (
     <>
       <HeaderDetails/>
-      <Heading>Detalhes</Heading> 
+      <Heading color={"white"} bg={"#5E5E5E"} pl={"50px"} pt={"30px"} fontWeight={"700"} size={"2xl"}>Detalhes</Heading> 
       <CardContainer>     
         <Container color={pokemonTypes && pokemonTypes[0]}> 
           <ImagesContainer>

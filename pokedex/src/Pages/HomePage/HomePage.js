@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import HeaderHome from '../../Components/Headers/HeaderHome'
 import PokemonCard from '../../Components/PokemonCard/PokemonCard'
 import { GlobalContext } from '../../Contexts/GlobalContext'
-import { Container, CardsContainer, Heading } from './styles'
+import { Container, CardsContainer } from './styles'
+import { Heading } from '@chakra-ui/react'
 
 function HomePage(props) {
 
@@ -11,7 +12,7 @@ function HomePage(props) {
   return (
     <Container>   
       <HeaderHome setActiveScreen={props.setActiveScreen}/> 
-      <Heading>Todos os Pokémons</Heading>  
+      <Heading color={"white"} bg={"#5E5E5E"} pl={"35px"} pt={"25px"} fontWeight={"700"} size={"2xl"}>Todos os Pokémons</Heading>  
       <CardsContainer>  
         {
           context.pokemons.map((pokemon) => {            

@@ -65,6 +65,10 @@ export const CatchButton = styled.button`
   right: 22px;
   z-index: 2;
   color: #000;
+  :hover{
+    cursor: pointer;
+    background-color: wheat;
+  }
 `;
 
 export const DeleteButton = styled.button`
@@ -84,13 +88,17 @@ export const DeleteButton = styled.button`
   right: 22px;
   z-index: 2;
   color: white;
+  :hover{
+    cursor: pointer;
+    background-color: red;
+  }
 `;
 
 export const Pokemon = styled.img`
-width: 193px;
-height: 193px;
-position: absolute;
-top: -60px;
-right: 0;
-z-index: 2;
+  width: 210px;
+  height: 240px;
+  position: absolute;
+  top: -75px;
+  right: 0;
+  z-index: 2;
 `

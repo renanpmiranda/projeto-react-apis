@@ -5,6 +5,8 @@ import { getTypes } from "../../Utils/ReturnPokemonType"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { goToDetails } from "../../Router/coordinator"
+import { Link } from '@chakra-ui/react'
+import ModalCatch from "../Modals/ModalCatch"
 
 function PokemonCard (props) {
 
@@ -50,7 +52,7 @@ function PokemonCard (props) {
                 return <PokemonType src={getTypes(type.type.name)} alt='' />
             })}
         </TypesContainer>
-        <p onClick={() => goToDetails(navigate, pokemonId)}>Detalhes</p>
+        <Link onClick={() => goToDetails(navigate, pokemonId)}>Detalhes</Link>
       </div>
       <div>
         <Pokemon src={pokemonImage} alt="" />

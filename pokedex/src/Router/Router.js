@@ -11,6 +11,12 @@ function Router () {
 
     const [activeScreen, setActiveScreen] = useState("HomePage")
 
+    const capitalizeFirstLetter = (string) => {
+      const capitalized = string.charAt(0).toUpperCase() + string.slice(1)
+  
+      return capitalized
+    }
+
     const addToPokedex = (pokemonToBeAdded) => {
         const newPokedex = [...pokedex]
     
@@ -20,24 +26,22 @@ function Router () {
         if(!pokemonFound){
           const newPokemon = {...pokemonToBeAdded}
           newPokedex.push(newPokemon)
+          alert("Gotcha! O Pokémon foi adicionado a sua Pokédex")
         } else {
-          alert(`${pokemonFound.name} já foi capturado!`)
-        }
+          alert(`${capitalizeFirstLetter(pokemonFound.name)} já foi capturado!`)
+        }        
         setPokedex(newPokedex)    
       }  
 
     const deleteFromPokedex = (pokemonToBeDeleted) => {
       const newPokedex = [...pokedex]
-      let index = 0
-
-      for(let i = 0; i < pokedex.length; i++){
-        
-        if(pokemonToBeDeleted === pokedex[i]){
-          index = i
-        }        
-      }
       
-      newPokedex.splice(index, 1)
+      const foundIndex = newPokedex.findIndex(
+        (pokemonInPokedex) => pokemonInPokedex.id === pokemonToBeDeleted.id
+      )
+      
+      alert("Oh, no! O Pokémon foi removido da sua Pokédex")
+      newPokedex.splice(foundIndex, 1)
       setPokedex(newPokedex)
     }
 
