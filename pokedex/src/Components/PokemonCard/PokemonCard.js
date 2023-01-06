@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, CatchButton, DeleteButton, Pokemon } from './styles'
 import pokeball from "../../Assets/pngwing 2.png"
 import { getTypes } from "../../Utils/ReturnPokemonType"
@@ -6,18 +6,20 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { goToDetails } from "../../Router/coordinator"
 import { Link } from '@chakra-ui/react'
-import ModalCatch from "../Modals/ModalCatch"
+import { GlobalContext } from "../../Contexts/GlobalContext"
 
 function PokemonCard (props) {
 
-  const navigate = useNavigate()  
+  const navigate = useNavigate()    
+
+  const context = useContext(GlobalContext)
 
   const [pokemonId, setPokemonId] = useState("")
 
   const [pokemonTypes, setPokemonTypes] = useState([])
 
-  const [pokemonImage, setPokemonImage] = useState("")   
-
+  const [pokemonImage, setPokemonImage] = useState("")  
+  
   useEffect(() => {
     getPokemonDetails()
   }, [])
@@ -40,9 +42,10 @@ function PokemonCard (props) {
     const capitalized = string.charAt(0).toUpperCase() + string.slice(1)
 
     return capitalized
-  }
-
+  }   
+  
   return (
+    <>         
     <Container color={pokemonTypes && pokemonTypes[0]}>            
       <div>
         <PokemonNumber>#{pokemonId}</PokemonNumber>
@@ -55,12 +58,13 @@ function PokemonCard (props) {
         <Link onClick={() => goToDetails(navigate, pokemonId)}>Detalhes</Link>
       </div>
       <div>
-        <Pokemon src={pokemonImage} alt="" />
-        {props.activeScreen === "HomePage" ? <CatchButton onClick={() => props.addToPokedex(props.pokemon)}>Capturar!</CatchButton> : <DeleteButton onClick={() => props.deleteFromPokedex(props.pokemon)}>Excluir</DeleteButton>}        
+        <Pokemon src={pokemonImage} alt="" />        
+        {context.activeScreen === "HomePage" ? <CatchButton onClick={() => context.addToPokedex(props.pokemon)}>Capturar!</CatchButton> : <DeleteButton onClick={() => context.deleteFromPokedex(props.pokemon)}>Excluir</DeleteButton>}
+               
       </div>
       <Pokeball src={pokeball} alt="pokeball" />         
-    </Container>    
-   
+    </Container>
+  </>  
   );
 };
 

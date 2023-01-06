@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import HeaderDetails from '../../Components/Headers/HeaderDetails'
 import { CardContainer, Move, MovesContainer, StatsContainer, Titles, FinalImageContainer, FinalImage, Stats, StatValues, ValuesContainer } from './styles'
@@ -7,11 +7,17 @@ import { BASE_URL } from '../../Constants/url'
 import pokeball from "../../Assets/pngwing 2.png"
 import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, PokemonImage, ImagesContainer, InfoMovesContainer } from './styles'
 import { getTypes } from "../../Utils/ReturnPokemonType"
-import { Progress, Heading } from "@chakra-ui/react"
+import { Progress, Heading, Text } from "@chakra-ui/react"
+import Modal from "react-modal"
+import { GlobalContext } from '../../Contexts/GlobalContext'
+
+Modal.setAppElement('#root')
 
 function DetailsPage() {  
 
-  const params = useParams()
+  const context = useContext(GlobalContext)
+
+  const params = useParams()  
 
   const [pokemonId, setPokemonId] = useState("")
 
@@ -28,6 +34,8 @@ function DetailsPage() {
   const [finalImage, setFinalImage] = useState("")
 
   const [stats, setStats] = useState([])
+
+  const [details, setDetails] = useState({})
 
   useEffect(() => {
     getPokemonDetails()
@@ -46,6 +54,7 @@ function DetailsPage() {
       setMoves(response.data.moves.slice(0,4))     
       setFinalImage(response.data.sprites.other.home.front_default)
       setStats(response.data.stats)
+      setDetails(response.data)
 
     } catch (error) {
       console.log(error)
@@ -58,9 +67,50 @@ function DetailsPage() {
     return capitalized
   }
 
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      border: 'none',
+      borderRadius: '12px',
+      width: '450px',
+      height: '220px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+    },
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.50)',
+      zIndex: '1000'
+    }
+  } 
+
   return (
-    <>
-      <HeaderDetails/>
+    <>        
+      <HeaderDetails details={details}/>
+      <Modal
+      isOpen={context.modalDeleteIsOpen}
+      onRequestClose={context.handleCloseModalDelete}
+      style={customStyles}
+      >
+        <Heading
+          fontWeight={"700"}
+          fontSize={"48px"}
+          textAlign={"center"}
+          paddingBottom={"20px"}
+        >Oh, no!
+        </Heading>
+        <Text
+          textAlign={"center"}
+        >
+        O Pokémon foi removido da sua Pokédex!
+        </Text>
+      </Modal>
       <Heading color={"white"} bg={"#5E5E5E"} pl={"50px"} pt={"30px"} fontWeight={"700"} size={"2xl"}>Detalhes</Heading> 
       <CardContainer>     
         <Container color={pokemonTypes && pokemonTypes[0]}> 

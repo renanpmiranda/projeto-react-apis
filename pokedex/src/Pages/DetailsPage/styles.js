@@ -159,6 +159,7 @@ export const Move = styled.div`
   margin-bottom: 20px;
   max-width: fit-content;
   color: black;
+  font-weight: 700;
   background: #ECECEC;
   border: 1px dashed rgba(0, 0, 0, 0.14);
   border-radius: 12px;
@@ -186,6 +187,7 @@ export const Stats = styled.div`
 
 export const StatValues = styled.span`
   color: black;  
+  font-weight: 700;
 `
 
 export const ValuesContainer = styled.div`

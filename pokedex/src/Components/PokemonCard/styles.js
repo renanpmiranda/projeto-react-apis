@@ -63,7 +63,7 @@ export const CatchButton = styled.button`
   position: absolute;
   bottom: 10px;
   right: 22px;
-  z-index: 2;
+  z-index: 1;
   color: #000;
   :hover{
     cursor: pointer;
@@ -86,7 +86,7 @@ export const DeleteButton = styled.button`
   position: absolute;
   bottom: 10px;
   right: 22px;
-  z-index: 2;
+  z-index: 1;
   color: white;
   :hover{
     cursor: pointer;
@@ -100,5 +100,5 @@ export const Pokemon = styled.img`
   position: absolute;
   top: -75px;
   right: 0;
-  z-index: 2;
+  z-index: 1;
 `

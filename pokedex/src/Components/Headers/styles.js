@@ -28,6 +28,7 @@ export const Button = styled.button`
     top: 41px;
     background: #33A4F5;
     border-radius: 8px;
+    font-weight: 700;
     :hover{
         cursor: pointer;
         background-color: #1081d2;
@@ -48,6 +49,7 @@ export const DeleteButton = styled.button`
     color: white;
     background:#FF6262;
     border-radius: 8px;
+    font-weight: 700;
     :hover{
         cursor: pointer;
         background-color: red;
