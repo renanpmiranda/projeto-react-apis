@@ -1,13 +1,6 @@
 import styled from "styled-components"
 import { getColors } from "../../Utils/ReturnCardColor";
 
-export const Heading = styled.h1`
-    background: #5E5E5E;
-    color: white;
-    padding-top: 25px;
-    padding-left: 50px;    
-`
-
 export const CardContainer = styled.div`
     background: #5E5E5E;
     padding: 10px;
@@ -28,7 +21,7 @@ export const Container = styled.div`
 export const PokemonNumber = styled.p`
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;  
   margin-top: 20px;
 `;
@@ -39,7 +32,7 @@ export const PokemonName = styled.h1`
   left: 771px;
   top: 39px;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 41px;
   line-height: 58px;
   color: #FFFFFF; 
   margin-bottom: 15px;
@@ -52,10 +45,12 @@ export const PokemonType = styled.img`
   overflow: hidden;
   border: 1px dashed #ffffff;
   margin-right: 18px;
+  
 `;
 
 export const TypesContainer = styled.div`
   margin-bottom: 52px;    
+  display: flex;
 `;
 
 export const Pokeball = styled.img`
@@ -156,7 +151,7 @@ export const MovesContainer = styled.div`
 export const Move = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   padding: 10px;
   gap: 10px;
   height: 37px;
@@ -164,6 +159,7 @@ export const Move = styled.div`
   margin-bottom: 20px;
   max-width: fit-content;
   color: black;
+  font-weight: 700;
   background: #ECECEC;
   border: 1px dashed rgba(0, 0, 0, 0.14);
   border-radius: 12px;
@@ -191,6 +187,7 @@ export const Stats = styled.div`
 
 export const StatValues = styled.span`
   color: black;  
+  font-weight: 700;
 `
 
 export const ValuesContainer = styled.div`
